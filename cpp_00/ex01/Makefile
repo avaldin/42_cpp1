@@ -1,4 +1,11 @@
-SRCS    =   megaphone.cpp
+SRCS    =   Contact.cpp\
+			PhoneBook.cpp\
+			main.cpp\
+			utils.cpp\
+
+HDRS	=	Contact.hpp\
+            PhoneBook.hpp\
+            main.hpp\
 
 OBJS    =    $(SRCS:.cpp=.o)
 
@@ -10,7 +17,7 @@ FLAGS    =    -Wall -Wextra -Werror -std=c++98
 
 all			:	$(NAME)
 
-%.o        :    %.cpp
+%.o        :    %.cpp $(HDRS)
 	$(CXX) $(FLAGS) -c $< -o $@
 
 $(NAME)    :    $(OBJS) Makefile
