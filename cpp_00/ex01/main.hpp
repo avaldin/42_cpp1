@@ -7,4 +7,7 @@
 # include <string>
 # include <stddef.h>
 
+
+void	searchContact(PhoneBook *phoneBook);
+
 #endif

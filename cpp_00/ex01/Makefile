@@ -2,6 +2,7 @@ SRCS    =   Contact.cpp\
 			PhoneBook.cpp\
 			main.cpp\
 			utils.cpp\
+			search.cpp\
 
 HDRS	=	Contact.hpp\
             PhoneBook.hpp\

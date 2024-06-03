@@ -1,7 +1,7 @@
 #include "main.hpp"
 
-Contact::Contact() : firstName(NULL), lastName(NULL), nickName(NULL),
-						phoneNumber(NULL), darkestSecret(NULL) {}
+Contact::Contact() : firstName(), lastName(), nickName(),
+						phoneNumber(), darkestSecret() {}
 
 void	Contact::setFirstName(std::string str)
 {
