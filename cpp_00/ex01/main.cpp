@@ -50,10 +50,28 @@ void	addContact(PhoneBook phoneBook)
 
 void	searchContact(PhoneBook phoneBook)
 {
-	int	i = 0;
+	int		i = 0;
+	Contact	contact;
 
-	while (i < 8 && phoneBook.getContact(i))
+	if (phoneBook.getContactIndex() == -1)
+	{
+		std::cout << "no contact" << std::endl;
+		return ;
+	}
+	contact = phoneBook.getContact(0);
+	while (i < phoneBook.getContactIndex())
+	{
+		contact = phoneBook.getContact(i);
+		printIndex();
+		std::cout << "|"
+		printFirstName();
+		std::cout << "|"
+		printLastName();
+		std::cout << "|"
+	}
 }
+
+std::cout << "         " << i + 1 << "|" <<
 
 int	main(void)
 {

@@ -11,11 +11,12 @@ public:
 
 	void	setNextContact(Contact &contact);
 	Contact	getContact(int i);
+	int		getContactIndex();
 
 private:
 
 	Contact contacts[8];
-	int		contactCount;
+	int		contactIndex;
 	int		lastContact;
 };
 
