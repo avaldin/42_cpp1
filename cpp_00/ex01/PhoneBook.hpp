@@ -8,6 +8,7 @@ class PhoneBook
 public:
 
 	PhoneBook();
+	//PhoneBook(int contactIndex, int lastContact);
 
 	void	setNextContact(Contact &contact);
 	Contact	getContact(int i);

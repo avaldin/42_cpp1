@@ -10,11 +10,11 @@ HDRS	=	Contact.hpp\
 
 OBJS    =    $(SRCS:.cpp=.o)
 
-NAME    =    megaphone
+NAME    =    phone
 
 CXX        =    c++
 
-FLAGS    =    -Wall -Wextra -Werror -std=c++98
+FLAGS    =    -Wall -Wextra -Werror -std=c++98 -g
 
 all			:	$(NAME)
 

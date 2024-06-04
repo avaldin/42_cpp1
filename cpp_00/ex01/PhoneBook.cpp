@@ -1,16 +1,12 @@
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook()
-{
-	lastContact = 0;
-	contactIndex = -1;
-}
+PhoneBook::PhoneBook() : contactIndex(0), lastContact(0) {}
 
 void	PhoneBook::setNextContact(Contact &contact)
 {
 	if (lastContact > 7)
 		lastContact = 0;
-	if (contactIndex < 7)
+	if (contactIndex < 8)
 		contactIndex++;
 	contacts[lastContact++] = contact;
 }

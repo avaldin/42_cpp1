@@ -61,7 +61,7 @@ void	searchContact(PhoneBook *phoneBook)
 	int		i = 0;
 	Contact	contact;
 
-	if (phoneBook->getContactIndex() < 0)
+	if (phoneBook->getContactIndex() < 1)
 	{
 		std::cout << "no contact" << std::endl;
 		return ;
@@ -79,12 +79,13 @@ void	searchContact(PhoneBook *phoneBook)
 		i++;
 		std::cout << std::endl;
 	}
-	std::cout << "give index contact : " << std::endl;
+	std::cout << "give index contact : " << std::endl << "> ";
 	std::cin >> i;
-	if (i - 48 < 0 || i - 48 > phoneBook->getContactIndex())
+	std::cin.ignore(1000, '\n');
+	if (i < 1 || i > phoneBook->getContactIndex())
 	{
 		std::cout << "bad index." << std::endl;
 		return ;
 	}
-	displayContact(contact);
+	displayContact(phoneBook->getContact(i - 1));
 }
