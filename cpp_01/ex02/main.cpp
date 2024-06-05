@@ -16,5 +16,4 @@ int	main(void)
 	std::cout << stringREF << std::endl;
 
 	return (0);
-
 }
