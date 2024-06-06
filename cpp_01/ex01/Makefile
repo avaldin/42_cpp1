@@ -2,7 +2,7 @@ SRCS    =   main.cpp\
 			Zombie.cpp\
 			zombieHorde.cpp\
 
-HDRS	=	Zombie.cpp\
+HDRS	=	Zombie.hpp\
 
 OBJS    =    $(SRCS:.cpp=.o)
 
