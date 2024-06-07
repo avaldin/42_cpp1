@@ -1,6 +1,8 @@
 #include "Harl.hpp"
 
-void	Harl::complain(int level)
+
+
+void	Harl::complain(std::string level)
 {
-	void
+	void	(methodPtr)[] = {info(), debug(), warning(), error()}
 }
