@@ -1,5 +1,6 @@
 #include <iostream>
 
+
 static bool	ft_IsLowerCase(char c)
 {
 	if (c < 123 && c > 96)
@@ -23,7 +24,7 @@ int	main(int argc, char **args)
 		while (args[i][j])
 		{
 			if (ft_IsLowerCase(args[i][j]))
-				std::cout << (char )(args[i][j] - 32);
+				std::cout << (char )(std::toupper(args[i][j]));
 			else
 				std::cout << args[i][j];
 			j++;
