@@ -15,7 +15,7 @@ public:
 	void beRepaired(unsigned int amount);
 
 	~ClapTrap();
-private:
+protected:
 
 	std::string	name;
 	unsigned int	hitPoint;

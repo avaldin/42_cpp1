@@ -1,27 +1,20 @@
 #include <iostream>
+#include "ClapTrap.hpp"
 
 #ifndef SCAVTRAP_HPP
 #define SCAVTRAP_HPP
 
 
 
-class ScavTrap
+class ScavTrap : public ClapTrap
 {
 public:
 
-	explicit ScavTrap(const std::string& name);
-
-	void attack(const std::string& target);
-	void takeDamage(unsigned int amount);
-	void beRepaired(unsigned int amount);
-
+	ScavTrap(const std::string& name);
 	~ScavTrap();
-private:
 
-	std::string	name;
-	unsigned int	hitPoint;
-	unsigned int	energyPoint;
-	unsigned int	attackDommage;
+	void	attack(const std::string& target);
+	void	guardGate();
 };
 
 
