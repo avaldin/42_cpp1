@@ -16,16 +16,18 @@ Fixed::Fixed(float floatValue)
 {
 	float	temp;
 	temp = floatValue * ( 1 << fractionalBits);
-	value =  static_cast<int>(temp);
-	if ((static_cast<float>(static_cast<int>(floatValue))) + 0.5 < floatValue)
-		value++;
-	std::cout << "Integer constructor called" << std::endl;
+	if (temp >= 0) {
+		value = static_cast<int>(temp + 0.5f);
+	} else {
+		value = static_cast<int>(temp - 0.5f);
+	}
+	std::cout << "Float constructor called" << std::endl;
 }
 
-Fixed::Fixed(Fixed &fixed)
+Fixed::Fixed(const Fixed& fixed)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	this->value = fixed.getRawBits();
+	*this = fixed;
 }
 
 Fixed::~Fixed()
@@ -44,7 +46,6 @@ Fixed	&Fixed::operator=(const Fixed &fixed)
 
 int		Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return (this->value);
 }
 
@@ -70,7 +71,8 @@ int		Fixed::toInt(void) const
 	return (intValue);
 }
 
-void	Fixed::operator<<(const Fixed &fixed)
+std::ostream	&operator<<(std::ostream& os, const Fixed &fixed)
 {
-	std::cout << fixed.toFloat();
+	os << fixed.toFloat();
+	return (os);
 }
