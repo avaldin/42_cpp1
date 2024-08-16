@@ -3,13 +3,13 @@
 
 Fixed::Fixed() : value(0)
 {
-	std::cout << "Default constructor called" << std::endl;
+	//std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(int intValue)
 {
 	value = intValue << fractionalBits;
-	std::cout << "Integer constructor called" << std::endl;
+//	std::cout << "Integer constructor called" << std::endl;
 }
 
 Fixed::Fixed(float floatValue)
@@ -21,23 +21,23 @@ Fixed::Fixed(float floatValue)
 	} else {
 		value = static_cast<int>(temp - 0.5f);
 	}
-	std::cout << "Float constructor called" << std::endl;
+//	std::cout << "Float constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed& fixed)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	//std::cout << "Copy constructor called" << std::endl;
 	*this = fixed;
 }
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
+	//std::cout << "Destructor called" << std::endl;
 }
 
 Fixed	&Fixed::operator=(const Fixed &fixed)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	//std::cout << "Copy assignment operator called" << std::endl;
 	if (this == &fixed)
 		return (*this);
 	this->value = fixed.getRawBits();
