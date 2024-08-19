@@ -86,5 +86,3 @@ std::string	ClapTrap::getName() const
 {
 	return (name);
 }
-
-
