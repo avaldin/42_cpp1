@@ -18,6 +18,7 @@ public:
 	//getteur and setter
 
 protected:
+
 	std::string	ideas[100];
 };
 
