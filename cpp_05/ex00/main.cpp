@@ -26,11 +26,7 @@ int	main()
 	{
 		jason = pedro;
 	}
-	catch (Bureaucrat::GradeTooHightExeption &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (Bureaucrat::GradeTooLowExeption &e)
+	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
 	}

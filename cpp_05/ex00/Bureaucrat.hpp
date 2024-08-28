@@ -21,12 +21,12 @@ public:
 
 	//exeption
 
-	class GradeTooHightExeption : std::exception
+	class GradeTooHightExeption : public std::exception
 	{
 	public:
 		const char *what() const throw();
 	};
-	class GradeTooLowExeption : std::exception
+	class GradeTooLowExeption : public std::exception
 	{
 	public:
 		const char *what() const throw();
