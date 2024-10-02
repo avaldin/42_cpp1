@@ -81,4 +81,5 @@ void Bureaucrat::setGrade(int newGrade)
 void Bureaucrat::executeForm(AForm &form) const
 {
 	form.execute(*this);
+	std::cout << this->name << " executed " << form.getName() << std::endl;
 }
