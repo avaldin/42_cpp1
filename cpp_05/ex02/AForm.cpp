@@ -3,7 +3,7 @@
 #include <iostream>
 #include <ostream>
 
-AForm::AForm() : name("unknow"), isSigned(false), signed_required(150), execute_required(150)
+AForm::AForm() : name("unknown"), isSigned(false), signed_required(150), execute_required(150)
 {
 	
 }
@@ -69,6 +69,11 @@ const char *AForm::GradeTooLowExeption::what() const throw()
 	return ("grade to low");
 }
 
+const char *AForm::NotSignedExeption::what() const throw()
+{
+	return ("Form not signed");
+}
+
 int			AForm::setSigned_required(int require)
 {
 	if (require < 1)
@@ -85,8 +90,11 @@ int			AForm::setExecute_require(int require)
 		throw GradeTooLowExeption();
 	return(require);
 }
+
 std::ostream &operator<<(std::ostream &o, AForm &f)
 {
 	o << "Form " << f.getName() << " signed boolean is " << f.getIsSigned() << ", signed_required is " << f.getSigned_required() << ", execute_required is " << f.getExecute_required() << std::endl;
 	return (o);
 }
+
+

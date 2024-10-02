@@ -19,6 +19,7 @@ public:
 	//methods
 
 	void	beSigned(const Bureaucrat& signer);
+	virtual void	execute(Bureaucrat const & executor) const = 0;
 
 	//getteur and setter
 
@@ -29,6 +30,11 @@ public:
 
 
 	class GradeTooHightExeption : public std::exception
+	{
+	public:
+		const char *what() const throw();
+	};
+	class NotSignedExeption : public std::exception
 	{
 	public:
 		const char *what() const throw();
