@@ -16,7 +16,7 @@ public:
 
     //methods
 
-	void execute(const Bureaucrat &executor) const override;
+	void execute(const Bureaucrat &executor) const;
 
     //getteur and setter
 

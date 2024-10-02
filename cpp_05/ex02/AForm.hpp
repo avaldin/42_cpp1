@@ -1,8 +1,9 @@
 #ifndef AFORM_HPP
 #define AFORM_HPP
+
 #include <string>
 
-#include "Bureaucrat.hpp"
+class Bureaucrat;
 
 class AForm
 {
@@ -11,14 +12,14 @@ public:
 	//constructor, destructor and operator
 	
 	AForm();
-	AForm(std::string name, int signed_require, int execute_require);
+	AForm(const std::string& name, int signed_require, int execute_require);
 	AForm(AForm const &copy);
 	AForm	&operator=(const AForm &copy);
-	~AForm();
+	virtual ~AForm() = 0;
 	
 	//methods
 
-	void	beSigned(const Bureaucrat& signer);
+	void			beSigned(Bureaucrat& signer);
 	virtual void	execute(Bureaucrat const & executor) const = 0;
 
 	//getteur and setter

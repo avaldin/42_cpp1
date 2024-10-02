@@ -1,8 +1,8 @@
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
+
 #include <string>
 #include "AForm.hpp"
-
 
 class Bureaucrat
 {
@@ -20,7 +20,8 @@ public:
 
 	void	incrementGrade(int	count);
 	void	decrementGrade(int	count);
-	void	signForm(AForm form);
+	void	signForm(AForm& form);
+	void	executeForm(AForm& form) const;
 
 	//exeption
 

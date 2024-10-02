@@ -1,59 +1,102 @@
 #include <iostream>
 
+#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
-
 
 int	main()
 {
-
 	Bureaucrat diego("diego", 5);
 	Bureaucrat jason("jason", 150);
-	Bureaucrat pedro("pedro", 1);
+	Bureaucrat pedro("pedro", 26);
 
+	/////////////    Shrubbery test      /////////
 
-
-	try
+	try //jason can't sign
 	{
-		Form	form_d("c", 150, 50);
-		Form	form_db(form_d);
-		diego.signForm(form_d);
-		jason.signForm(form_d);
-		pedro.signForm(form_d);
-		diego.signForm(form_db);
-		jason.signForm(form_db);
-		pedro.signForm(form_db);
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	try
-	{
-		Form	form_a("a", 200, 50);
-		Form	form_ab(form_a);
-		diego.signForm(form_a);
-		jason.signForm(form_a);
-		pedro.signForm(form_a);
-		diego.signForm(form_ab);
-		jason.signForm(form_ab);
-		pedro.signForm(form_ab);
+		ShrubberyCreationForm form_s("Home");
+		jason.signForm(form_s);
 	}
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
 	}
 
-	try
+	try // diego sign but jason can't execute
 	{
-		Form	form_b("b", 100, 50);
-		Form	form_bb = form_b;
-		diego.signForm(form_b);
-		diego.signForm(form_bb);
-		jason.signForm(form_b);
-		pedro.signForm(form_b);
-		jason.signForm(form_bb);
-		pedro.signForm(form_bb);
+		ShrubberyCreationForm form_s("Home");
+		diego.signForm(form_s);
+		jason.executeForm(form_s);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	try // diego try execute but not signed
+	{
+		ShrubberyCreationForm form_s("Home");
+		diego.executeForm(form_s);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	try // diego execute tow times
+	{
+		ShrubberyCreationForm form_s("home");
+		diego.signForm(form_s);
+		diego.executeForm(form_s);
+		diego.executeForm(form_s);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	/////////////    Robotomy test      /////////
+
+
+	try //jason can't sign
+	{
+		RobotomyRequestForm form_s("Home");
+		jason.signForm(form_s);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	try // diego sign but jason can't execute
+	{
+		RobotomyRequestForm form_s("Home");
+		diego.signForm(form_s);
+		jason.executeForm(form_s);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	try // diego try execute but not signed
+	{
+		RobotomyRequestForm form_s("Home");
+		diego.executeForm(form_s);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	try // diego execute tow times
+	{
+		RobotomyRequestForm form_s("Home");
+		diego.signForm(form_s);
+		diego.executeForm(form_s);
+		diego.executeForm(form_s);
 	}
 	catch (std::exception &e)
 	{
@@ -61,21 +104,50 @@ int	main()
 	}
 
 
+	/////////////    presidential test      /////////
 
-	try
+
+
+	try //jason can't sign
 	{
-		Form	form_c("c", 1, 50);
-		Form	form_cb(form_c);
-		pedro.signForm(form_c);
-		pedro.signForm(form_cb);
-		diego.signForm(form_c);
-		jason.signForm(form_c);
-		diego.signForm(form_cb);
-		jason.signForm(form_cb);
+		PresidentialPardonForm form_s("Home");
+		jason.signForm(form_s);
 	}
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
 	}
 
+	try // diego sign but jason can't execute
+	{
+		PresidentialPardonForm form_s("Home");
+		diego.signForm(form_s);
+		jason.executeForm(form_s);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	try // diego try execute but not signed
+	{
+		PresidentialPardonForm form_s("Home");
+		diego.executeForm(form_s);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	try // diego execute tow times
+	{
+		PresidentialPardonForm form_s("Home");
+		diego.signForm(form_s);
+		diego.executeForm(form_s);
+		diego.executeForm(form_s);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 }

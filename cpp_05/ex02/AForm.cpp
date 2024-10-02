@@ -1,5 +1,5 @@
 #include "AForm.hpp"
-
+#include "Bureaucrat.hpp"
 #include <iostream>
 #include <ostream>
 
@@ -8,7 +8,7 @@ AForm::AForm() : name("unknown"), isSigned(false), signed_required(150), execute
 	
 }
 
-AForm::AForm(std::string name, int signed_require, int execute_require) : name(name),
+AForm::AForm(const std::string& name, int signed_require, int execute_require) : name(name),
 			isSigned(false), signed_required(setSigned_required(signed_require)), execute_required(execute_require)
 {
 
@@ -32,14 +32,14 @@ AForm::~AForm()
 
 }
 
-void		AForm::beSigned(const Bureaucrat& signer)
+void		AForm::beSigned(Bureaucrat& signer)
 {
 	if (this->signed_required < signer.getGrade())
 		throw GradeTooLowExeption();
 	this->isSigned = true;
 }
 
-const		std::string AForm::getName() const
+const std::string	AForm::getName() const
 {
 	return (this->name);
 }

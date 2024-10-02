@@ -2,14 +2,10 @@
 #include <iostream>
 #include <ostream>
 #include <string>
-#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat() : name("unknow"), grade(150) {}
 
-Bureaucrat::Bureaucrat(const std::string& name, int grade) : name(name)
-{
-		setGrade(grade);
-}
+Bureaucrat::Bureaucrat(const std::string& name, int grade) : name(name), grade(grade) {}
 
 Bureaucrat::Bureaucrat(Bureaucrat const &copy) : name(copy.getName()), grade(150)
 {
@@ -46,7 +42,7 @@ void Bureaucrat::decrementGrade(int count)
 	setGrade(this->grade + count);
 }
 
-void Bureaucrat::signForm(AForm form)
+void Bureaucrat::signForm(AForm& form)
 {
 	form.beSigned(*this);
 	std::cout << this->getName() << " signed " << form.getName() << std::endl;
@@ -80,4 +76,9 @@ void Bureaucrat::setGrade(int newGrade)
 		throw Bureaucrat::GradeTooLowExeption();
 	else
 		this->grade = newGrade;
+}
+
+void Bureaucrat::executeForm(AForm &form) const
+{
+	form.execute(*this);
 }

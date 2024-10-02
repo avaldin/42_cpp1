@@ -3,12 +3,14 @@ SRCS    =   main.cpp\
 			AForm.cpp\
 			ShrubberyCreationForm.cpp\
 			RobotomyRequestForm.cpp\
+			PresidentialPardonForm.cpp\
 
 
 HDRS	=	Bureaucrat.hpp\
 			AForm.hpp\
 			ShrubberyCreationForm.hpp\
 			RobotomyRequestForm.hpp\
+			PresidentialPardonForm.hpp\
 
 OBJS    =    $(SRCS:.cpp=.o)
 

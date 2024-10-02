@@ -1,6 +1,7 @@
 #include <fstream>
 #include <iostream>
 #include "ShrubberyCreationForm.hpp"
+#include "Bureaucrat.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : AForm(target, 145, 137), target(target) {}
 
@@ -17,7 +18,6 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
-
 
 
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
@@ -57,4 +57,5 @@ void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 			"                               ;%@@@@%::;.          \n"
 			"                              ;%@@@@%%:;;;. \n"
 			"                          ...;%@@@@@%%:;;;;,..";
+	file.close();
 }
