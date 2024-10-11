@@ -5,7 +5,7 @@ HDRS	=	ScalarConverter.hpp\
 
 OBJS    =    $(SRCS:.cpp=.o)
 
-NAME    =    exec
+NAME    =    converter
 
 CXX        =    c++
 

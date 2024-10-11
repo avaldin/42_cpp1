@@ -2,20 +2,30 @@
 #include <string>
 #include <sstream>
 #include <iostream>
+#include <limits>
 
 void	toPrint(char c, int i, float f, double d)
 {
-	if (c < 32 || c == 127)
+	if (static_cast<float>(c) != f)
+		std::cout << "char : impossible" << std::endl;
+	else if (c < 32 || c == 127)
 		std::cout << "char : non displayable" << std::endl;
 	else
 		std::cout << "char : '" << c << "'" << std::endl;
-	std::cout << "int : " << i << std::endl;
-	std::cout << "float : " << f << std::endl;
-	if (f < -100000000 || f > 100000000)
-		std::cout << ".0f" << std::endl;
-	std::cout << "double : " << d << std::endl;
-	if (d < -100000000 || d > 10000000)
-		std::cout << ".0" << std::endl;
+	if (static_cast<float>(i) == f)
+		std::cout << "int : " << i << std::endl;
+	else
+		std::cout << "int : impossible" << std::endl;
+	if (f == static_cast<float>(i))
+		std::cout << "float : " << f << ".0f" << std::endl;
+	else if (f == static_cast<float>(d))
+		std::cout << "float : " << f << "f" << std::endl;
+	else
+		std::cout << "float : "<< f << std::endl;
+	if (d == static_cast<double>(i))
+		std::cout << "double : " << d << ".0" << std::endl;
+	else
+		std::cout << "double : " << d << std::endl;
 }
 
 bool toChar(const std::string &toConvert)
@@ -44,7 +54,7 @@ bool toInt(const std::string &toConvert)
 
 bool toFloat(const std::string& toConvert)
 {
-	std::stringstream ss(toConvert.substr());
+	std::stringstream ss(toConvert.substr(0, toConvert.length() - 1));
 	float	f;
 	char	c;
 	std::string	str;
@@ -77,6 +87,27 @@ void ScalarConverter::convert(const std::string& toConvert)
 		return ;
 	if (toChar(toConvert) || toInt(toConvert) || toFloat(toConvert) || toDouble(toConvert))
 		return ;
+	else if (toConvert == "nan" || toConvert == "nanf")
+	{
+		std::cout << "char : impossible" << std::endl;
+		std::cout << "int : impossible" << std::endl;
+		std::cout << "float : nanf" << std::endl;
+		std::cout << "double : nan" << std::endl;
+	}
+	else if (toConvert == "+inf" )
+	{
+		std::cout << "char : impossible" << std::endl;
+		std::cout << "int : impossible" << std::endl;
+		std::cout << "float : " << std::numeric_limits<float>::infinity() << std::endl;
+		std::cout << "double : " << std::numeric_limits<double>::infinity() << std::endl;
+	}
+	else if (toConvert == "-inf" )
+	{
+		std::cout << "char : impossible" << std::endl;
+		std::cout << "int : impossible" << std::endl;
+		std::cout << "float : " << -std::numeric_limits<float>::infinity() << std::endl;
+		std::cout << "double : " << -std::numeric_limits<double>::infinity() << std::endl;
+	}
 	else
 	{
 		std::cout << "char : impossible" << std::endl;
