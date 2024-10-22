@@ -33,14 +33,14 @@ public:
 	Fixed operator--(int);
 
 	// methods
-	int		getRawBits() const;
-	void	setRawBits(int raw);
-	float	toFloat() const;
-	int		toInt() const;
-	static Fixed &min(Fixed &a, Fixed &b);
-	static const Fixed &min(Fixed const &a, Fixed const &b);
-	static Fixed &max(Fixed &a, Fixed &b);
-	static const Fixed &max(Fixed const &a, const Fixed &b);
+	int					getRawBits() const;
+	void				setRawBits(int raw);
+	float				toFloat() const;
+	int					toInt() const;
+	static Fixed		&min(Fixed &a, Fixed &b);
+	static const Fixed	&min(Fixed const &a, Fixed const &b);
+	static Fixed 		&max(Fixed &a, Fixed &b);
+	static const Fixed	&max(Fixed const &a, const Fixed &b);
 
 private:
 

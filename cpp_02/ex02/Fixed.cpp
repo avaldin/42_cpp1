@@ -142,7 +142,6 @@ Fixed	Fixed::operator--()
 Fixed	Fixed::operator++(int)
 {
 	Fixed tmp = *this;
-	// i = this->_fp_value;
 	value++;
 	return (tmp);
 }
@@ -150,7 +149,6 @@ Fixed	Fixed::operator++(int)
 Fixed	Fixed::operator--(int)
 {
 	Fixed tmp = *this;
-	// i = this->_fp_value;
 	value--;
 	return (tmp);
 }
