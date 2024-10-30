@@ -1,6 +1,3 @@
-//
-// Created by avaldin on 16/08/24.
-//
 
 #ifndef CLAPTRAP_HPP
 #define CLAPTRAP_HPP
@@ -28,7 +25,7 @@ public:
 
 private:
 
-	std::string	name;
+	std::string		name;
 	unsigned int	hitPoint;
 	unsigned int	energyPoint;
 	unsigned int	attackDommage;

@@ -3,11 +3,15 @@ SRCS    =   main.cpp\
 			Dog.cpp\
 			Cat.cpp\
 			Brain.cpp\
+			WrongCat.cpp\
+			WrongAnimal.cpp\
 
 HDRS	=	Animal.hpp\
 			Dog.hpp\
 			Cat.hpp\
 			Brain.hpp\
+			WrongCat.hpp\
+			WrongAnimal.cpp\
 
 
 OBJS    =    $(SRCS:.cpp=.o)

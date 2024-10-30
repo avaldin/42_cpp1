@@ -2,11 +2,17 @@
 
 #include <iostream>
 #include <ostream>
+#include <sstream>
 
 Brain::Brain()
 {
+	std::ostringstream 	number;
 	std::cout << "constructor Brain called" << std::endl;
-
+	for (int i = 0; i < 100; ++i)
+	{
+		number << i;
+		ideas[i] = "idea n." + number.str();
+	}
 }
 
 Brain::Brain(Brain const &copy)

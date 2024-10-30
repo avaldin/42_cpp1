@@ -14,7 +14,7 @@ public:
 	ClapTrap	&operator=(const ClapTrap &copy);
 	~ClapTrap();
 
-	void attack(const std::string& target);
+	virtual void attack(const std::string& target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
 
@@ -25,7 +25,7 @@ public:
 
 protected:
 
-	std::string	name;
+	std::string		name;
 	unsigned int	hitPoint;
 	unsigned int	energyPoint;
 	unsigned int	attackDommage;

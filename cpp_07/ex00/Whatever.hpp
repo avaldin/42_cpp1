@@ -2,7 +2,7 @@
 #define EX00_WHATEVER_HPP
 
 template<typename T>
-void	Swap(T a, T b)
+void	swap(T &a, T &b)
 {
 	T temp;
 
@@ -11,26 +11,19 @@ void	Swap(T a, T b)
 	b = temp;
 }
 
-class Whatever
+template<typename T>
+T	min(T &a, T &b)
 {
-public:
+	if (b > a)
+		return (a);
+	return (b);
+}
 
-	//constructor, destructor and operator
-
-	Whatever();
-
-	Whatever(Whatever const &copy);
-
-	Whatever &operator=(const Whatever &copy);
-
-	~Whatever();
-
-	//methods
-
-	//getteur and setter
-
-protected:
-
-};
-
+template<typename T>
+T	max(T &a, T &b)
+{
+	if (b < a)
+		return (a);
+	return (b);
+}
 #endif

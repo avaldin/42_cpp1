@@ -12,21 +12,23 @@ ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name)
 	attackDommage = 20;
 }
 
-ScavTrap::ScavTrap()
+ScavTrap::ScavTrap() : ClapTrap()
 {
 	std::cout << "default scavtrap created" << std::endl;
-	hitPoint = 0;
-	energyPoint = 0;
-	attackDommage = 0;
+	hitPoint = 100;
+	energyPoint = 50;
+	attackDommage = 20;
 }
 
 ScavTrap	&ScavTrap::operator=(const ScavTrap &copy)
 {
+	std::cout << "ScavTrap copy assignment constructor called" << std::endl;
+	if (this == &copy)
+		return (*this);
 	this->hitPoint = copy.getHitPoint();
 	this->energyPoint = copy.getEnergyPoint();
 	this->attackDommage = copy.getAttackDommage();
 	this->name = copy.getName();
-	std::cout << "ScavTrap copy assignment constructor called" << std::endl;
 	return (*this);
 }
 
@@ -57,4 +59,3 @@ void	ScavTrap::guardGate()
 {
 	std::cout << name << " is in guardGate" << std::endl;
 }
-

@@ -7,14 +7,14 @@ Dog::Dog()
 {
 	this->type = "dog";
 	std::cout << "constructor Dog called" << std::endl;
-	this->brain = new Brain;
+	this->brain = new Brain();
 }
 
 Dog::Dog(Dog const &copy) : Animal(copy)
 {
+	this->brain = new Brain(*copy.brain);
 	this->type = copy.type;
 	std::cout << "copy constructor Dog called" << std::endl;
-	this->brain = copy.brain;
 }
 
 Dog	&Dog::operator=(const Dog &copy)

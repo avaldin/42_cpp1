@@ -1,10 +1,10 @@
 SRCS    =   main.cpp\
 
-HDRS	=	ScalarConverter.hpp\
+HDRS	=	Whatever.hpp\
 
 OBJS    =    $(SRCS:.cpp=.o)
 
-NAME    =    converter
+NAME    =    cpp
 
 CXX        =    c++
 

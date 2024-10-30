@@ -10,7 +10,6 @@ int	main()
 	ScavTrap	didier("didier");
 	FragTrap	moussa("moussa");
 
-
 	diego.attack("joey");
 	joey.takeDamage(0);
 	joey.takeDamage(5);
