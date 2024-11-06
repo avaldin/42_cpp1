@@ -7,17 +7,16 @@
 class Cat : public Animal
 {
 public:
+	// constructor, destructor and operator
 
-	//constructor, destructor and operator
-	
 	Cat();
 	Cat(Cat const &copy);
-	Cat	&operator=(const Cat &copy);
+	Cat &operator=(Cat copy);
 	~Cat();
-	
-	//methods
 
-	void	makeSound() const;
+	// methode
+	void afficher() const;
+	void makeSound() const;
 };
 
 #endif

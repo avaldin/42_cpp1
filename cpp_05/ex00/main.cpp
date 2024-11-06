@@ -5,16 +5,11 @@
 
 int	main()
 {
-
-	Bureaucrat diego("diego", 5);
-	Bureaucrat jason("jason", 150);
-	Bureaucrat pedro("pedro", 1);
-
-	std::cout << diego << std::endl;
-	diego.decrementGrade(2);
-	std::cout << diego << std::endl;
 	try
 	{
+		Bureaucrat diego("diego", 5);
+		Bureaucrat jason("jason", 150);
+		Bureaucrat pedro("pedro", 1);
 		pedro.incrementGrade(2);
 	}
 	catch (Bureaucrat::GradeTooHightExeption &e)

@@ -2,7 +2,7 @@
 #include "ClapTrap.hpp"
 #include <iostream>
 
-ClapTrap::ClapTrap(const std::string& name) : hitPoint(10), energyPoint(10), attackDommage(0)
+ClapTrap::ClapTrap(const std::string &name) : hitPoint(10), energyPoint(10), attackDommage(0)
 {
 	this->name = name;
 	std::cout << "ClapTrap created" << std::endl;
@@ -22,7 +22,7 @@ ClapTrap::ClapTrap(const ClapTrap &copy)
 	std::cout << "ClapTrap copy constructor called" << std::endl;
 }
 
-ClapTrap	&ClapTrap::operator=(const ClapTrap &copy)
+ClapTrap &ClapTrap::operator=(const ClapTrap &copy)
 {
 	std::cout << "ClapTrap copy assignment constructor called" << std::endl;
 	if (this == &copy)
@@ -39,7 +39,7 @@ ClapTrap::~ClapTrap()
 	std::cout << "ClapTrap destroyed" << std::endl;
 }
 
-void	ClapTrap::attack(const std::string& target)
+void ClapTrap::attack(const std::string &target)
 {
 	if (energyPoint >= 1)
 	{
@@ -48,7 +48,7 @@ void	ClapTrap::attack(const std::string& target)
 	}
 }
 
-void	ClapTrap::takeDamage(unsigned int amount)
+void ClapTrap::takeDamage(unsigned int amount)
 {
 	std::cout << "ClapTrap " << name << " loose " << amount << " hit point!" << std::endl;
 	if (hitPoint <= amount)
@@ -60,7 +60,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 void ClapTrap::beRepaired(unsigned int amount)
 {
 	if (!energyPoint)
-		return ;
+		return;
 	std::cout << "ClapTrap " << name << " recovered " << amount << " hit point!" << std::endl;
 	if (hitPoint >= 10 - amount)
 		hitPoint = 10;
@@ -69,7 +69,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 	energyPoint--;
 }
 
-unsigned int	ClapTrap::getHitPoint() const
+unsigned int ClapTrap::getHitPoint() const
 {
 	return (hitPoint);
 }
@@ -84,7 +84,11 @@ unsigned int ClapTrap::getEnergyPoint() const
 	return (energyPoint);
 }
 
-std::string	ClapTrap::getName() const
+std::string ClapTrap::getName() const
 {
 	return (name);
+}
+
+void ClapTrap::afficher()
+{
 }
