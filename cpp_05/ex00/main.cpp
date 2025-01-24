@@ -10,23 +10,50 @@ int	main()
 		Bureaucrat diego("diego", 5);
 		Bureaucrat jason("jason", 150);
 		Bureaucrat pedro("pedro", 1);
+		pedro.decrementGrade(2);
+		std::cout << "pedro grade ->" << pedro.getGrade() << std::endl;
+		std::cout << "all good" << std::endl;
+	}
+	catch (Bureaucrat::GradeTooHightExeption &e)
+	{
+		std::cout << e.what() << std::endl << std::endl;
+	}
+
+	try
+	{
+		Bureaucrat diego("diego", 5);
+		Bureaucrat jason("jason", 160);
+		Bureaucrat pedro("pedro", 1);
+		pedro.incrementGrade(2);
+	}
+	catch (Bureaucrat::GradeTooLowExeption &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	try
+	{
+		Bureaucrat diego("diego", 0);
+		Bureaucrat jason("jason", 150);
+		Bureaucrat pedro("pedro", 1);
 		pedro.incrementGrade(2);
 	}
 	catch (Bureaucrat::GradeTooHightExeption &e)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	std::cout << diego << std::endl;
+
 	try
 	{
-		jason = pedro;
+		Bureaucrat diego("diego", 5);
+		Bureaucrat jason("jason", 150);
+		Bureaucrat pedro("pedro", 1);
+		pedro.incrementGrade(2);
 	}
-	catch (std::exception &e)
+	catch (Bureaucrat::GradeTooHightExeption &e)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	std::cout << jason << std::endl;
-	jason = diego;
-	std::cout << jason << std::endl;
+
 	return (0);
 }
