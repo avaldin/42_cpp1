@@ -3,22 +3,13 @@
 #include <iostream>
 #include <ostream>
 
-Form::Form() : name("unknow"), isSigned(false), signed_required(150), execute_required(150)
-{
-	
-}
+Form::Form() : name("unknow"), isSigned(false), signed_required(150), execute_required(150) {}
 
 Form::Form(std::string name, int signed_require, int execute_require) : name(name),
-			isSigned(false), signed_required(setSigned_required(signed_require)), execute_required(execute_require)
-{
-
-}
+			isSigned(false), signed_required(signed_require), execute_required(execute_require) {}
 
 Form::Form(Form const &copy) : name(copy.getName()),  isSigned(false),
-			signed_required(copy.getSigned_required()), execute_required(copy.getExecute_required())
-{
-
-}
+			signed_required(copy.getSigned_required()), execute_required(copy.getExecute_required()) {}
 
 Form	&Form::operator=(const Form &copy)
 {
@@ -27,25 +18,23 @@ Form	&Form::operator=(const Form &copy)
 	return (*this);
 }
 
-Form::~Form()
-{
-
-}
+Form::~Form() {}
 
 void		Form::beSigned(const Bureaucrat& signer)
 {
 	if (this->signed_required < signer.getGrade())
-		throw GradeTooLowExeption();
+	{
+		std::cout << signer.getName() << " couldn’t sign " << name <<" because ";
+		throw Form::GradeTooLowExeption();
+	}
 	this->isSigned = true;
 }
 
-const		std::string Form::getName() const
-{
+std::string Form::getName() const {
 	return (this->name);
 }
 
-bool		Form::getIsSigned() const
-{
+bool		Form::getIsSigned() const {
 	return (this->isSigned);
 }
 
@@ -87,6 +76,10 @@ int			Form::setExecute_require(int require)
 }
 std::ostream &operator<<(std::ostream &o, Form &f)
 {
-	o << "Form " << f.getName() << " signed boolean is " << f.getIsSigned() << ", signed_required is " << f.getSigned_required() << ", execute_required is " << f.getExecute_required() << std::endl;
+	if (f.getIsSigned())
+		o << "Form " << f.getName() << " is signed " << ", signed_required is " << f.getSigned_required() << ", execute_required is " << f.getExecute_required();
+	else
+		o << "Form " << f.getName() << " isn't signed " << ", signed_required is " << f.getSigned_required() << ", execute_required is " << f.getExecute_required();
+
 	return (o);
 }

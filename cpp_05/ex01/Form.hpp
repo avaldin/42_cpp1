@@ -22,7 +22,7 @@ public:
 
 	//getteur and setter
 
-	const std::string	getName() const;
+	std::string	getName() const;
 	bool				getIsSigned() const;
 	int			getSigned_required() const;
 	int			getExecute_required() const;
