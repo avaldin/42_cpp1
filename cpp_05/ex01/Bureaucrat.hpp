@@ -20,7 +20,7 @@ public:
 
 	void	incrementGrade(int	count);
 	void	decrementGrade(int	count);
-	void	signForm(Form form);
+	void	signForm(Form &form);
 
 	//exeption
 
