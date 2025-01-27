@@ -94,14 +94,14 @@ void ScalarConverter::convert(const std::string& toConvert)
 		std::cout << "float : nanf" << std::endl;
 		std::cout << "double : nan" << std::endl;
 	}
-	else if (toConvert == "+inf" )
+	else if (toConvert == "+inf" || toConvert == "+inff")
 	{
 		std::cout << "char : impossible" << std::endl;
 		std::cout << "int : impossible" << std::endl;
 		std::cout << "float : " << std::numeric_limits<float>::infinity() << std::endl;
 		std::cout << "double : " << std::numeric_limits<double>::infinity() << std::endl;
 	}
-	else if (toConvert == "-inf" )
+	else if (toConvert == "-inff" || toConvert == "-inf" )
 	{
 		std::cout << "char : impossible" << std::endl;
 		std::cout << "int : impossible" << std::endl;
