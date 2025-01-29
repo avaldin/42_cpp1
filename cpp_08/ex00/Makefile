@@ -1,5 +1,4 @@
 SRCS    =   main.cpp\
-			easyfind.cpp\
 
 HDRS	=	easyfind.hpp\
 

@@ -22,9 +22,9 @@ int	main() {
 	std::deque<int> deque;
 	int *find;
 
-	for (int i = 0; i < 20; ++i) { vect[i] = i; }
+	for (int i = 0; i < 20; ++i) { vect.push_back(i); }
 	for (int i = 0; i < 20; ++i) { list.push_back(i); }
-	for (int i = 0; i < 20; ++i) { deque[i] = i; }
+	for (int i = 0; i < 20; ++i) { deque.push_back(i); }
 
 	find = easyfind(vect, 4);
 	std::cout << *find << " in vect is at the place " << find << std::endl;
