@@ -18,7 +18,11 @@ public:
 	//methods
 
 	void	addNumber(int num);
+	unsigned int	shortestSpan();
+	unsigned int	longestSpan();
 
+	void			addSpanByIterator(std::set<int>::iterator it1, std::set<int>::iterator it2);
+	void 			addRandomNumbers(int count);
 	//getteur and setter
 
 private:
@@ -27,17 +31,7 @@ private:
 
 	unsigned int	size;
 	unsigned int	sizeMax;
-	unsigned int	shortest;
-	unsigned int	longest;
 
-
-	void 			setShortestSpan(int num);
-	void 			setLongestSpan(int num);
-
-	unsigned int	shortestSpan();
-	unsigned int	longestSpan();
-
-	void			addSpanByIterato()
 
 	class sizeMaxException : public std::exception
 	{
