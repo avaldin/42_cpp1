@@ -1,8 +1,7 @@
-#include <fstream>
 #include <iostream>
-#include <cstdlib>
 #include <sstream>
 #include "BitcoinExchange.hpp"
+#include <limits.h>
 
 BitcoinExchange::BitcoinExchange() {
 
@@ -14,7 +13,7 @@ BitcoinExchange::BitcoinExchange(BitcoinExchange const &copy) {
 }
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &copy) {
-	(void) copy;
+	CSV = copy.CSV;
 	return (*this);
 }
 
@@ -22,55 +21,75 @@ BitcoinExchange::~BitcoinExchange() {
 
 }
 
-void BitcoinExchange::parsLine(std::string& line) {
-	std::stringstream	ss;
-	int 				date[3];
-	float				price;
+void BitcoinExchange::parsCsvLine(std::string& line) {
+	std::stringstream	ss(line);
+	t_date date;
+	char dash1, dash2, comma;
+	float price;
 
-	if (line.length() < 12 || line[4] != '-' || line[7] != '-' || line[10] != ',')
-	{
-		std::cout << "bad data.CSV" << std::endl;
-		exit(1);
+	ss >> date.year >> dash1 >> date.month >> dash2 >> date.day >> comma >> price;
+	if (ss.fail() || dash1 != '-' || dash2 != '-' || comma != ',' ||
+		date.year < 2000 || date.year > 2025 ||
+		date.month < 1 || date.month > 12 ||
+		date.day < 1 || date.day > 31 ||
+		price < 0) {
+		throw BadCSVException();
 	}
-	ss << line;
-	ss >> date[0];
-	if (ss.fail() || date[0] < 2000 || date[0] > 2025) {
-		std::cout << "bad data.CSV" << std::endl;
-		exit(1);
-	}
-	ss.str(ss.str().erase(0, 5));
-
-	ss >> date[1];
-	if (ss.fail() || date[1] < 1 || date[1] > 12) {
-		std::cout << "bad data.CSV" << std::endl;
-		exit(1);
-	}
-	ss.str(ss.str().erase(0, 3));
-
-	ss >> date[2];
-	if (ss.fail() || date[2] < 0 || date[2] > 31) {
-		std::cout << "bad data.CSV" << std::endl;
-		exit(1);
-	}
-	ss.str(ss.str().erase(0, 3));
-
-	ss >> price;
-	if (ss.fail() || price < 0) {
-		std::cout << "bad data.CSV" << std::endl;
-		exit(1);
-	}
-
 	CSV[date] = price;
 }
 
 void BitcoinExchange::parsCSV() {
+	std::string	line;
 	std::ifstream file("data.csv");
 
-	if (!file) {
-		std::cerr << "data.csv can't be open" << std::endl;
-		exit(1);
-	}
-	std::string	line;
+	if (!file.is_open())
+		throw OpenException();
+	if (!std::getline(file, line) || line != "date,exchange_rate")
+		throw BadCSVException();
 	while (std::getline(file, line))
-		parsLine(line);
+		parsCsvLine(line);
+	file.close();
 }
+
+void BitcoinExchange::trade(const std::string &input) {
+	std::ifstream	file(input.c_str());
+	std::string		line;
+
+	if (!file.is_open()){
+		std::cout << "uu" << std::endl;
+		throw OpenException();
+	}
+	if (!std::getline(file, line) || line != "date | value")
+		throw HeaderException();
+	while (std::getline(file, line))
+		parsInputLine(line);
+}
+
+void BitcoinExchange::parsInputLine(std::string &line) {
+	std::stringstream	ss(line);
+	t_date				date;
+	char				dash1, dash2, pipe;
+	float				value;
+
+	ss >> date.year >> dash1 >> date.month >> dash2 >> date.day >> pipe >> value;
+	if (ss.fail() || dash1 != '-' || dash2 != '-' || pipe != '|' ||
+			date.year < 2000 || date.year > 2050 ||
+			date.month < 1 || date.month > 12 ||
+			date.day < 1 || date.day > 31) {
+		std::cout << "Error: bad input => " << line << std::endl;
+	}
+	else if (value < 0)
+		std::cout << "Error: not a positive value" << std::endl;
+	else if (value > 1000)
+		std::cout << "Error: too large number" << std::endl;
+	else{
+		std::map<t_date,float>::iterator it = CSV.begin();
+		while (it != CSV.end() && it->first < date)
+			it++;
+		if (it != CSV.begin() && date != it->first)
+			it--;
+		std::cout << date.year << "-" << date.month << "-" << date.day
+		<< " => " << value << " = " << value * it->second << std::endl;
+	}
+}
+

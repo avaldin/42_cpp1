@@ -9,13 +9,23 @@ Base *generate()
 {
 	int		i;
 
+	srand(time(0));
 	i = rand() % 3;
 	if (i == 0)
+	{
+		std::cout << "generated A" << std::endl;
 		return (new A);
+	}
 	else if (i == 1)
+	{
+		std::cout << "generated B" << std::endl;
 		return (new B);
+	}
 	else
+	{
+		std::cout << "generated C" << std::endl;
 		return (new C);
+	}
 }
 
 void identify(Base* p)
@@ -64,6 +74,7 @@ int	main()
 	A		a;
 	B		b;
 	C		c;
+	C		*cPtr = &c;
 	Base	base;
 
 	identify(&a);
@@ -71,9 +82,8 @@ int	main()
 	identify(&c);
 	identify(a);
 	identify(b);
-	identify(a);
 	identify(c);
-	identify(base);
-	identify(&base);
+	identify(cPtr);
+	identify(generate());
 	return (0);
 }
