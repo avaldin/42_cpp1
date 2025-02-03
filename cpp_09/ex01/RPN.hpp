@@ -18,7 +18,7 @@ public:
 
 	~RPN();
 
-	void	exec(std::stringstream &inputLine);
+	void	exec(std::stringstream &ccinputLine);
 private:
 	std::stack<int>		stack;
 
