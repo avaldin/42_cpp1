@@ -4,11 +4,11 @@
 int	main(int argc, char **argv) {
 	PmergeMe me = PmergeMe();
 
+	if (argc < 2)
+		return (1);
 	try
 	{
-		me.parser(argc, argv);
-		me.sorting();
-		me.printResult();
+		me.sorting(argc, argv);
 	}
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
