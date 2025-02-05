@@ -11,4 +11,13 @@ void	iter(T *array, U len, void (*f)(T &))
 }
 
 
+template<typename T, typename U>
+
+void	iter(T *array, U len, void (*f)(const T &))
+{
+	for (U i = 0; i < len ; ++i) {
+		f(array[i]);
+	}
+}
+
 #endif //CPP_07_ITER_HPP

@@ -16,7 +16,7 @@ public:
 
 	Array(unsigned int size): array(new A[size]()), n(size) {}
 
-	Array(Array const &copy): n(copy.n) { *this = copy; }
+	Array(Array const &copy): array(NULL), n(copy.n) { *this = copy; }
 
 	Array &operator=(const Array &copy) {
 		if (this->array != NULL)
@@ -29,7 +29,15 @@ public:
 		return (*this);
 	}
 
-	A	&operator[](unsigned int i) const {
+	A	operator[](unsigned int i) const {
+		if (i >= n || n == 0 || array == NULL)
+		{
+			throw OutOfRange();
+		}
+		return (array[i]);
+	}
+
+	A	&operator[](unsigned int i) {
 		if (i >= n || n == 0 || array == NULL)
 		{
 			throw OutOfRange();
@@ -40,7 +48,7 @@ public:
 	~Array() { delete[] (this->array); }
 
 
-	unsigned int	size() { return (n); }
+	unsigned int	size() const { return (n); }
 
 	class OutOfRange : public std::exception {
 	public:
