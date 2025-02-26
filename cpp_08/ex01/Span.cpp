@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
+#include <algorithm>
 
 Span::Span(unsigned int N) : size(0), sizeMax(N) { }
 
@@ -22,7 +23,7 @@ Span::~Span() {}
 void Span::addNumber(int num) {
 	if (size >= sizeMax)
 		throw sizeMaxException();
-	if (span.find(num) != span.end())
+	if (std::find(span.begin(), span.end(), num) != span.end())
 		throw duplicateNumberException();
 	span.insert(num);
 	size = span.size();
@@ -62,10 +63,12 @@ void	Span::addSpanByIterator(std::set<int>::iterator it1, std::set<int>::iterato
 }
 
 void	Span::addRandomNumbers(int count) {
-	srand(std::time(NULL));
 	int rand;
+
+	srand(std::time(NULL));
 	for (int i = 0; i < count; ++i) {
-		while (span.find(rand = std::rand()) != span.end());
+		if (std::find(span.begin(), span.end(), (rand = std::rand())) != span.end())
+			throw duplicateNumberException();
 		addNumber(rand);
 	}
 }

@@ -13,9 +13,9 @@ int main() {
 
 	std::cout << std::endl << std::endl;
 
-	Span adds = Span(100000);
+	Span adds = Span(10000);
 	try {
-		adds.addRandomNumbers(90000);
+		adds.addRandomNumbers(5000);
 		std::cout << "longest span : " << adds.longestSpan() << std::endl << " smallest span : " << adds.shortestSpan() << std::endl;
 	}
 	catch (std::exception &e) {
